@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+body{
+    background: url(https://images.unsplash.com/32/Mc8kW4x9Q3aRR3RkP5Im_IMG_4417.jpg?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmlkZW8lMjBiYWNrZ3JvdW5kfGVufDB8fDB8fHww&w=1000&q=80);
+}
+div {
+    border:solid;
+    height: 300px;
+    width: 350px;
+    text-align: center;
+    font-size: 50px;
+  }
+
+  
+  
+  #container {
+    display: flex; /* This makes the container a flex container */
+  justify-content: space-between; /* Align flex items with space between them */
+  align-items: center; 
+  border: none;
+  }
+  
+  #container div {
+    background-color: #2bedd3;
+    width: 100px;
+    height: 100px;
+    float: left; /* This will override the black background for all child divs */
+  }
+  </style>
+<body>
+    <h1 id="boss" style="color: whitesmoke;">Let's play tic tac toe!</h1>
+  <center>  <div id="container">
+      <center> <div class="a" ></div>
+        <div class="a" ></div>
+        <div class="a" ></div><br>
+        <div class="a" ></div>
+        <div class="a" ></div>
+        <div class="a" ></div><br>
+        <div class="a" ></div>
+        <div class="a" ></div>
+        <div class="a" ></div><br>
+</center>
+    </div></center>
+    
+    <script>let x=1;
+      let head=document.getElementById('boss');
+      let clicked=document.getElementsByClassName("a");
+      let audio= new Audio("audio.mp3");
+      let newaudio= new Audio("newaudio.mp3");
+      let gameover= new Audio("gameover.mp3");
+      clicked[0].addEventListener('click',sabin);
+      clicked[1].addEventListener('click',sabin);
+      clicked[2].addEventListener('click',sabin);
+      clicked[3].addEventListener('click',sabin);
+      clicked[4].addEventListener('click',sabin);
+      clicked[5].addEventListener('click',sabin);
+      clicked[6].addEventListener('click',sabin);
+      clicked[7].addEventListener('click',sabin);
+      clicked[8].addEventListener('click',sabin);
+      function sabin(event){
+          if(x%2==0){
+              head.textContent='A turn:'
+            for(i=0;i<=8;i++){
+      
+          clicked[i].style.backgroundColor='#2bed6c';
+            }  
+          }
+          if(x%2!=0){
+              head.textContent='B turn';
+              for(i=0;i<=8;i++){
+            clicked[i].style.backgroundColor='red';
+              }  
+            }
+      
+      if(x==1){
+          event.target.innerHTML='X';event.target.removeEventListener('click', sabin);newaudio.play();
+          
+      }    
+      
+      if(x==2){
+          event.target.innerHTML='O';event.target.removeEventListener('click', sabin);newaudio.play();
+          
+      }
+      if(x==3)
+      {
+          event.target.innerHTML='X'; event.target.removeEventListener('click', sabin);newaudio.play();
+      }
+      if(x==4)
+      {
+          event.target.innerHTML='O'; event.target.removeEventListener('click', sabin);newaudio.play();
+      }
+      if(x==5){
+          event.target.innerHTML='X'; event.target.removeEventListener('click', sabin);newaudio.play();
+      }
+      if(x==6){
+          event.target.innerHTML='O'; event.target.removeEventListener('click', sabin);newaudio.play();
+      }
+      if(x==7)
+      {
+          event.target.innerHTML='X'; event.target.removeEventListener('click', sabin);newaudio.play();
+      }
+      if(x==8)
+      {
+          event.target.innerHTML='O'; event.target.removeEventListener('click', sabin);newaudio.play();
+         
+      }
+      if(x==9)
+      {
+          event.target.innerHTML='X'; event.target.removeEventListener('click', sabin);newaudio.play();
+          
+          
+      }
+      x++;
+     
+      setTimeout(results,1000);
+      
+      
+      }
+      function over(){
+          if(x%2!=0){
+              head.textContent='B won the game';
+              audio.play();
+          }
+          if(x%2==0){
+              head.textContent='A won the game';
+              audio.play();
+          }
+         
+          let newtext=document.querySelectorAll('.a');
+          newtext.forEach(div => {
+              div.textContent = '';
+            });
+      
+              setTimeout(refresh, 1000);
+          }
+      function refresh(){
+          location.reload();
+      }
+      function results(){
+        if(x<=10){
+          if(clicked[0].textContent==='X' && clicked[4].textContent==='X' && clicked[8].textContent==='X'){
+              over();
+          }
+          if(clicked[0].textContent==='O' && clicked[4].textContent==='O' && clicked[8].textContent==='O'){
+          over();
+          }
+          if(clicked[2].textContent==='X' && clicked[4].textContent==='X' && clicked[6].textContent==='X'){
+              over();
+          }
+          if(clicked[2].textContent==='O' && clicked[4].textContent==='O' && clicked[6].textContent==='O'){
+             over();
+          }
+          if(clicked[6].textContent==='X' && clicked[7].textContent==='X' && clicked[8].textContent==='X'){
+              over();
+             
+          }
+          if(clicked[6].textContent==='O' && clicked[7].textContent==='O' && clicked[8].textContent==='O'){
+              over();
+          }
+          
+          if(clicked[0].textContent==='X' && clicked[3].textContent==='X' && clicked[6].textContent==='X'){
+              over();
+          }
+          if(clicked[0].textContent==='O' && clicked[3].textContent==='O' && clicked[6].textContent==='O'){
+              over();
+          
+          }
+          
+          if(clicked[1].textContent==='X' && clicked[4].textContent==='X' && clicked[7].textContent==='X'){
+             over();
+          }
+          if(clicked[1].textContent==='O' && clicked[4].textContent==='O' && clicked[7].textContent==='O'){
+              over();
+          }
+          if(clicked[2].textContent==='X' && clicked[5].textContent==='X' && clicked[8].textContent==='X'){
+              over();
+          }
+          if(clicked[2].textContent==='O' && clicked[5].textContent==='O' && clicked[8].textContent==='O'){
+             over();
+          }
+          if(clicked[0].textContent==='X' && clicked[1].textContent==='X' && clicked[2].textContent==='X'){
+              over();
+          }
+          if(clicked[0].textContent==='O' && clicked[1].textContent==='O' && clicked[2].textContent==='O'){
+              over();
+          }
+          if(clicked[3].textContent==='X' && clicked[4].textContent==='X' && clicked[5].textContent==='X'){
+              over();
+          }
+          if(clicked[3].textContent==='O' && clicked[4].textContent==='O' && clicked[5].textContent==='O'){
+             over();
+          }
+        }
+
+      if(x==10)  {
+            end();
+        }
+        
+    }
+
+      
+       function end(){
+          setTimeout(ends,950);       }
+       function ends(){
+        head.textContent='Sorry! no one won.';
+          gameover.play();
+          setTimeout(refresh,1000);
+       }
+       
+      
+      
+      </script>
+</body>
+</html>
